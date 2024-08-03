@@ -7,30 +7,41 @@ homebrew_taps:
   - "homebrew/cask"
   - "homebrew/cask-versions"
   - "homebrew/cask-fonts"
+  - "homebrew/cask-drivers"
 
 homebrew_installed_packages:
   - "bash"
+  - "cowsay"
+  - "fortune"
   - "git"
+  - "git-extras"
   - "github/gh/gh"
   - "gpg2"
   - "jenv"
   - "jq"
+  - "lolcat"
   - "mas"
   - "maven"
+  - "mpv"
+  - "ncdu"
   - "neovim"
   - "python"
+  - "shellcheck"
   - "stow"
   - "tmux"
   - "tree"
   - "vim"
+  - "watch"
   - "zsh"
-  # Work
+  # Cloud
   - "awscli"
   - "gimme-aws-creds"
 
 homebrew_cask_appdir: "/Applications"
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
+  - "balance-lock"
+  - "dbeaver-community"
   - "docker"
   - "firefox"
   - "firefox-nightly"
@@ -42,13 +53,19 @@ homebrew_cask_installed_apps:
   - "jetbrains-toolbox"
   - "joplin"
   - "karabiner-elements"
+  - "logitech-options"
   - "slack"
   - "spotify"
   - "switchhosts"
   - "tunnelblick"
+  - "virtualbox"
+  - "virtualbox-extension-pack"
   - "visual-studio-code"
+  - "zoom"
   - "zulu"
   - "zulu11"
+  # Cloud
+  - "google-cloud-sdk"
 
 pip_installed_packages:
   - "ansible"

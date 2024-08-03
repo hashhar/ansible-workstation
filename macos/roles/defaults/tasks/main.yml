@@ -1,12 +1,202 @@
 ---
-- name: "Increase keyboard repeat rate"
+- name: "Configure keyboard"
   community.general.osx_defaults:
-    domain: "NSGlobalDomain"
+    domain: "{{ item.domain }}"
     key: "{{ item.key }}"
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
   loop:
-    - { key: "InitialKeyRepeat", value: "10", type: "int" }
-    - { key: "KeyRepeat", value: "2", type: "int" }
-    - { key: "ApplePressAndHoldEnabled", value: "false", type: "boolean" }
+    # Spellcheck and completions
+    - { domain: "NSGlobalDomain", key: "NSAutomaticSpellingCorrectionEnabled", value: "false", type: "boolean" }
+    - { domain: "NSGlobalDomain", key: "WebAutomaticSpellingCorrectionEnabled", value: "false", type: "boolean" }
+    - { domain: "NSGlobalDomain", key: "NSAutomaticTextCompletionEnabled", value: "false", type: "boolean" }
+    # Automatic substitutions and capitalisation
+    - { domain: "NSGlobalDomain", key: "NSAutomaticCapitalizationEnabled", value: "false", type: "boolean" }
+    - { domain: "NSGlobalDomain", key: "NSAutomaticDashSubstitutionEnabled", value: "false", type: "boolean" }
+    - { domain: "NSGlobalDomain", key: "NSAutomaticPeriodSubstitutionEnabled", value: "false", type: "boolean" }
+    - { domain: "NSGlobalDomain", key: "NSAutomaticQuoteSubstitutionEnabled", value: "false", type: "boolean" }
+    # Press and hold
+    - { domain: "NSGlobalDomain", key: "ApplePressAndHoldEnabled", value: "false", type: "boolean" }
+    # Remove all text replacements
+    - { domain: "NSGlobalDomain", key: "NSUserDictionaryReplacementItems", value: [], type: "array" }
+    # Keyboard repeat rate
+    - { domain: "NSGlobalDomain", key: "InitialKeyRepeat", value: "15", type: "int" }
+    - { domain: "NSGlobalDomain", key: "KeyRepeat", value: "2", type: "int" }
+
+- name: "Configure mouse and trackpad"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    # Change scroll direction
+    # TODO: com.apple.swipescrolldirection controls both trackpad and mouse. We need natural scroll for trackpad but otherwise for mouse.
+    #- { domain: "NSGlobalDomain", key: "com.apple.swipescrolldirection", value: "false", type: "boolean" }
+    # Mouse movement speed
+    - { domain: "NSGlobalDomain", key: "com.apple.mouse.scaling", value: "1.5", type: "float" }
+    # Tap to click
+    - { domain: "com.apple.AppleMultitouchTrackpad", key: "Clicking", value: "true", type: "boolean" }
+    # Three-finger swipe down to launch App Expose
+    - { domain: "com.apple.dock", key: "showAppExposeGestureEnabled", value: "true", type: "boolean" }
+
+- name: "Configure Mission Control"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  vars:
+    # Modifier key magic values
+    - modifier_none: "0"
+    - modifier_control: "262144"
+    - modifier_option: "524288"
+    - modifier_command: "1048576"
+    # Action magic values
+    - nothing: "1"
+    - mission_control: "2"
+    - application_windows: "3"
+    - desktop: "4"
+    - start_screen_saver: "5"
+    - disable_screen_saver: "6"
+    - put_display_to_sleep: "10"
+    - launchpad: "11"
+    - notification_centre: "12"
+    - lock_screen: "13"
+  loop:
+    # Hot corners
+    - { domain: "com.apple.dock", key: "wvous-bl-corner", value: "{{ application_windows }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-bl-modifier", value: "{{ modifier_command }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-br-corner", value: "{{ mission_control }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-br-modifier", value: "{{ modifier_command }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-tl-corner", value: "{{ launchpad }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-tl-modifier", value: "{{ modifier_command }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-tr-corner", value: "{{ notification_centre }}", type: "int" }
+    - { domain: "com.apple.dock", key: "wvous-tr-modifier", value: "{{ modifier_command }}", type: "int" }
+    # Group all windows of an application together in Expose
+    - { domain: "com.apple.dock", key: "expose-group-apps", value: "true", type: "boolean" }
+    # Use static spaces arrangement rather than MRU
+    - { domain: "com.apple.dock", key: "mru-spaces", value: "false", type: "boolean" }
+    # When switching windows, switch to a Space with open windows of that application
+    - { domain: "com.apple.dock", key: "AppleSpacesSwitchOnActivate", value: "true", type: "boolean" }
+    # Give each display it's own spaces
+    - { domain: "com.apple.dock", key: "spans-displays", value: "false", type: "boolean" }
+
+- name: "Configure Dock"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    - { domain: "com.apple.dock", key: "autohide", value: "true", type: "boolean" }
+    - { domain: "com.apple.dock", key: "orientation", value: "left", type: "string" }
+    - { domain: "com.apple.dock", key: "tilesize", value: "128", type: "float" }
+    # Animate opening applications
+    - { domain: "com.apple.dock", key: "launchanim", value: "true", type: "boolean" }
+    - { domain: "com.apple.dock", key: "magnification", value: "false", type: "boolean" }
+    - { domain: "com.apple.dock", key: "mineffect", value: "scale", type: "string" }
+    # Minimize windows into application icon instead of their own entries
+    - { domain: "com.apple.dock", key: "minimize-to-application", value: "true", type: "boolean" }
+    # Show indicator for open applications
+    - { domain: "com.apple.dock", key: "show-process-indicators", value: "true", type: "boolean" }
+    # Action to take on double clicking application title bar
+    - { domain: "NSGlobalDomain", key: "AppleActionOnDoubleClick", value: "Maximize", type: "string" }
+
+- name: "Configure menu bar"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible com.apple.menuextra.airport", value: "true", type: "boolean" }
+    - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible com.apple.menuextra.battery", value: "true", type: "boolean" }
+    - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible com.apple.menuextra.bluetooth", value: "true", type: "boolean" }
+    - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible com.apple.menuextra.clock", value: "true", type: "boolean" }
+    - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible com.apple.menuextra.volume", value: "true", type: "boolean" }
+    - domain: "com.apple.systemuiserver"
+      key: "menuExtras"
+      value:
+        - "/System/Library/CoreServices/Menu Extras/Clock.menu"
+        - "/System/Library/CoreServices/Menu Extras/Battery.menu"
+        - "/System/Library/CoreServices/Menu Extras/AirPort.menu"
+        - "/System/Library/CoreServices/Menu Extras/Bluetooth.menu"
+        - "/System/Library/CoreServices/Menu Extras/Volume.menu"
+      type: "array"
+
+- name: "Configure Siri"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    # Disable "Hey Siri"
+    - { domain: "com.apple.Siri", key: "VoiceTriggerUserEnabled", value: "false", type: "boolean" }
+    - { domain: "com.apple.voicetrigger", key: "VoiceTrigger Enabled", value: "false", type: "boolean" }
+    # Disable Siri altogether
+    - { domain: "com.apple.assistant.support", key: "Assistant Enabled", value: "false", type: "boolean" }
+    # Disable dictation
+    - { domain: "com.apple.assistant.support", key: "Dictation Enabled", value: "false", type: "boolean" }
+
+- name: "Configure Apple Photos"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    # Disable autoplay
+    - { domain: "com.apple.Photos", key: "IPXDefaultAutoplayVideos", value: "false", type: "boolean" }
+    # Don't copy while importing, only add a reference
+    - { domain: "com.apple.Photos", key: "IPXDefaultImportUseReferencedImport", value: "true", type: "boolean" }
+
+- name: "Configure Software Update"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    - { domain: "/Library/Preferences/com.apple.SoftwareUpdate", key: "AutomaticCheckEnabled", value: "true", type: "boolean" }
+    - { domain: "/Library/Preferences/com.apple.SoftwareUpdate", key: "AutomaticDownload", value: "true", type: "boolean" }
+    - { domain: "/Library/Preferences/com.apple.SoftwareUpdate", key: "ConfigDataInstall", value: "true", type: "boolean" }
+    - { domain: "/Library/Preferences/com.apple.SoftwareUpdate", key: "CriticalUpdateInstall", value: "true", type: "boolean" }
+    - { domain: "/Library/Preferences/com.apple.SoftwareUpdate", key: "AutomaticallyInstallMacOSUpdates", value: "false", type: "boolean" }
+
+- name: "Configure touch-bar"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  loop:
+    - domain: "com.apple.controlstrip"
+      key: "FullCustomized"
+      value:
+        - "com.apple.system.group.brightness"
+        - "com.apple.system.mission-control"
+        - "com.apple.system.launchpad"
+        - "com.apple.system.group.keyboard-brightness"
+        - "com.apple.system.group.media"
+        - "com.apple.system.group.volume"
+        - "com.apple.system.siri"
+      type: "array"
+    - domain: "com.apple.controlstrip"
+      key: "MiniCustomized"
+      value:
+        - "com.apple.system.brightness"
+        - "com.apple.system.volume"
+        - "com.apple.system.mute"
+        - "com.apple.system.media-play-pause"
+      type: "array"
