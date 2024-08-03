@@ -12,8 +12,8 @@
       tags: ["always"]
 
   roles:
-    # - role: "homebrew"
-    #   tags: ["homebrew"]
+    - role: "homebrew"
+      tags: ["homebrew"]
     # - role: "mas"
     #   tags: ["mas"]
     # - role: "pip"
