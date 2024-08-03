@@ -12,11 +12,11 @@
       tags: ["always"]
 
   roles:
-    - role: "homebrew"
-      tags: ["homebrew"]
-      #- role: "mas"
-      #  tags: ["mas"]
-      #- role: "pip"
-      #  tags: ["pip"]
+    # - role: "homebrew"
+    #   tags: ["homebrew"]
+    # - role: "mas"
+    #   tags: ["mas"]
+    # - role: "pip"
+    #   tags: ["pip"]
     - role: "defaults"
       tags: ["defaults"]
