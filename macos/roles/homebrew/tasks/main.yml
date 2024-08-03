@@ -1,0 +1,40 @@
+---
+- name: "Register Homebrew cache location"
+  command: "brew --cache"
+  register: "homebrew_cache_path"
+  changed_when: false
+  check_mode: false
+
+- name: "Ensure configured Homebrew taps are tapped"
+  community.general.homebrew_tap:
+    tap: "{{ item.name | default(item) }}"
+    url: "{{ item.url | default(omit) }}"
+    state: "present"
+  loop: "{{ homebrew_taps }}"
+
+- name: "Ensure configured Homebrew packages are installed"
+  community.general.homebrew:
+    name: "{{ item.name | default(item) }}"
+    install_options: "{{ item.install_options | default(omit) }}"
+    state: "present"
+  loop: "{{ homebrew_installed_packages }}"
+  notify:
+    - "Clear Homebrew cache"
+
+- name: "Ensure configured Homebrew Cask apps are installed"
+  community.general.homebrew_cask:
+    name: "{{ item.name | default(item) }}"
+    install_options: "{{ item.install_options | default('appdir=' + homebrew_cask_appdir) }}"
+    accept_external_apps: "{{ homebrew_cask_accept_external_apps }}"
+    state: "present"
+  loop: "{{ homebrew_cask_installed_apps }}"
+  notify:
+    - "Clear Homebrew cache"
+
+- name: "Upgrade all Homebrew packages (if configured)"
+  community.general.homebrew:
+    update_homebrew: true
+    upgrade_all: true
+  when: "homebrew_upgrade_all_packages | bool"
+  notify:
+    - "Clear Homebrew cache"

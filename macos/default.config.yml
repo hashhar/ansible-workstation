@@ -1,0 +1,57 @@
+---
+homebrew_upgrade_all_packages: false
+homebrew_clear_cache: false
+
+homebrew_taps:
+  - "homebrew/core"
+  - "homebrew/cask"
+  - "homebrew/cask-versions"
+  - "homebrew/cask-fonts"
+
+homebrew_installed_packages:
+  - "bash"
+  - "git"
+  - "github/gh/gh"
+  - "gpg2"
+  - "jenv"
+  - "jq"
+  - "mas"
+  - "maven"
+  - "neovim"
+  - "python"
+  - "stow"
+  - "tmux"
+  - "tree"
+  - "vim"
+  - "zsh"
+  # Work
+  - "awscli"
+  - "gimme-aws-creds"
+
+homebrew_cask_appdir: "/Applications"
+homebrew_cask_accept_external_apps: false
+homebrew_cask_installed_apps:
+  - "docker"
+  - "firefox"
+  - "firefox-nightly"
+  - "font-fira-code"
+  - "font-fira-mono"
+  - "gimp"
+  - "google-chrome"
+  - "iterm2"
+  - "jetbrains-toolbox"
+  - "joplin"
+  - "karabiner-elements"
+  - "slack"
+  - "spotify"
+  - "switchhosts"
+  - "tunnelblick"
+  - "visual-studio-code"
+  - "zulu"
+  - "zulu11"
+
+pip_installed_packages:
+  - "ansible"
+  - "paramiko"
+  - "yamllint"
+  - "ansible-lint"
