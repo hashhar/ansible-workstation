@@ -1,0 +1,24 @@
+---
+- name: Work out and set macOS HostName
+  include_tasks: "hostname.yml"
+  when:
+    - "mh_hostname is defined"
+    - "mh_hostname | length > 0"
+
+- name: Work out and set macOS LocalHostName
+  include_tasks: "localhostname.yml"
+  when:
+    - "mh_localhostname is defined"
+    - "mh_localhostname | length > 0"
+
+- name: Work out and set macOS ComputerName
+  include_tasks: "computername.yml"
+  when:
+    - "mh_computername is defined"
+    - "mh_computername | length > 0"
+
+- name: Set NetBIOS name
+  include_tasks: "netbiosname.yml"
+  when:
+    - "mh_netbiosname is defined"
+    - "mh_netbiosname | length > 0"

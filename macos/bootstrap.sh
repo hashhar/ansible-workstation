@@ -15,9 +15,3 @@ ansible-playbook -i inventory -K main.yml
 
 # Change user's SHELL to brew managed zsh
 sudo dscl . -create /Users/$USER UserShell /opt/homebrew/bin/zsh
-
-# Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "argon"
-sudo scutil --set HostName "argon"
-sudo scutil --set LocalHostName "argon"
-sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "argon"

@@ -1,0 +1,9 @@
+---
+- name: Set macOS NetBIOSName
+  community.general.osx_defaults:
+    domain: /Library/Preferences/SystemConfiguration/com.apple.smb.server
+    key: NetBIOSName
+    type: string
+    value: "{{ mh_netbiosname }}"
+  become: true
+  notify: clear dns cache
