@@ -29,7 +29,7 @@
     # Sound
     - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible Sound", value: "true", type: "boolean" }
     # Now Playing
-    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible NowPlaying", value: "false", type: "boolean" }
+    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible NowPlaying", value: "true", type: "boolean" }
     # Battery
     - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible Battery", value: "true", type: "boolean" }
     # Menu Bar Only > Spotlight
@@ -217,3 +217,53 @@
     # Disable creation of Metadata Files on Network Volumes and USB Volumes
     - { domain: "com.apple.desktopservices", key: "DSDontWriteNetworkStores", value: "true", type: "boolean" }
     - { domain: "com.apple.desktopservices", key: "DSDontWriteUSBStores", value: "true", type: "boolean" }
+
+# Time Machine
+# In addition to this take a look at the time-machine-dev-exclusions.sh for more
+- name: "Configure Time Machine exclusions"
+  community.general.osx_defaults:
+    domain: "{{ item.domain }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    type: "{{ item.type }}"
+    state: "present"
+  vars:
+    homedir: "/Users/ashhar.hasan"
+  # needs superuser to change these
+  become: true
+  loop:
+    - domain: "/Library/Preferences/com.apple.TimeMachine"
+      key: "SkipPaths"
+      type: "array"
+      value:
+        - "/Applications"
+        - "/opt/homebrew"
+        - "/private/var/db/diagnostics"   # frequently changing
+        - "/private/var/db/uuidtext"      # frequently changing
+        - "{{ homedir }}/.cache"
+        - "{{ homedir }}/.jenv"
+        - "{{ homedir }}/.liquidprompt"
+        - "{{ homedir }}/.local"
+        - "{{ homedir }}/.m2/mvnd"
+        - "{{ homedir }}/.m2/repository"
+        - "{{ homedir }}/.m2/wrapper"
+        - "{{ homedir }}/.npm"
+        - "{{ homedir }}/.sdkman"
+        - "{{ homedir }}/.vscode"
+        - "{{ homedir }}/.yarn"
+        - "{{ homedir }}/.zcompcache"
+        - "{{ homedir }}/Applications"
+        - "{{ homedir }}/Downloads/LocalSend"
+        - "{{ homedir }}/Downloads/VideoDownloadHelper"
+        - "{{ homedir }}/go"
+        - "{{ homedir }}/Library/Application Support/Code"
+        - "{{ homedir }}/Library/Application Support/Google"
+        - "{{ homedir }}/Library/Application Support/Slack"
+        - "{{ homedir }}/Library/Application Support/Spotify"
+        - "{{ homedir }}/Library/Application Support/Stats"
+        - "{{ homedir }}/Library/Application Support/zoom.us"
+        - "{{ homedir }}/Library/Containers/com.apple.mediaanalysisd"
+        - "{{ homedir }}/Library/Containers/com.apple.Safari"
+        - "{{ homedir }}/Library/IdentityServices"    # frequently changing
+        - "{{ homedir }}/Movies"
+        - "{{ homedir }}/Music"
