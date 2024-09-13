@@ -10,7 +10,7 @@ if ! command -v python &>/dev/null; then
 fi
 python3 -m venv venv
 . venv/bin/activate
-pip install ansible paramiko
+pip install -r requirements.txt
 ansible-galaxy install -r requirements.yml
 
 ansible-playbook -i inventory -K main.yml
