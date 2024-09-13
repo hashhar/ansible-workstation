@@ -227,6 +227,7 @@
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
+    array_add: true
   vars:
     homedir: "/Users/ashhar.hasan"
   # needs superuser to change these
