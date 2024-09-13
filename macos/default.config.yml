@@ -49,6 +49,7 @@ homebrew_installed_packages:
   - "watch"
   - "wget"
   - "xmlstarlet"
+  - "yq"
   - "zsh"
 
 homebrew_cask_accept_external_apps: false
