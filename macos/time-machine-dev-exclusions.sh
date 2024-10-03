@@ -89,8 +89,9 @@ exclude_file() {
 clean_excludes() {
     local filtered_excludes
     filtered_excludes="$(defaults read /Library/Preferences/com.apple.TimeMachine SkipPaths \
-        | grep -Fv '    "~ashhar.hasan/code')"
+        | grep -Fv '    "'"$SOURCE_CODE_ROOT"'')"
     echo "$filtered_excludes"
+    sudo defaults write /Library/Preferences/com.apple.TimeMachine SkipPaths "$filtered_excludes"
 }
 
 # Iterate over the directory/sentinel pairs to construct the `find` expression.

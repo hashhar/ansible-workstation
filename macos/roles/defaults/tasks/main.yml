@@ -257,6 +257,7 @@
         - "{{ homedir }}/Downloads/LocalSend"
         - "{{ homedir }}/Downloads/VideoDownloadHelper"
         - "{{ homedir }}/go"
+        - "{{ homedir }}/Library/Application Support/com.apple.idleassetsd"   # wallpapers and screensavers
         - "{{ homedir }}/Library/Application Support/Code"
         - "{{ homedir }}/Library/Application Support/Google"
         - "{{ homedir }}/Library/Application Support/Slack"
