@@ -238,6 +238,7 @@
       type: "array"
       value:
         - "/Applications"
+        - "/Library/Application Support/com.apple.idleassetsd"   # wallpapers and screensavers
         - "/opt/homebrew"
         - "/private/var/db/diagnostics"   # frequently changing
         - "/private/var/db/uuidtext"      # frequently changing
@@ -256,16 +257,15 @@
         - "{{ homedir }}/Applications"
         - "{{ homedir }}/Downloads/LocalSend"
         - "{{ homedir }}/Downloads/VideoDownloadHelper"
-        - "{{ homedir }}/go"
-        - "{{ homedir }}/Library/Application Support/com.apple.idleassetsd"   # wallpapers and screensavers
         - "{{ homedir }}/Library/Application Support/Code"
         - "{{ homedir }}/Library/Application Support/Google"
         - "{{ homedir }}/Library/Application Support/Slack"
         - "{{ homedir }}/Library/Application Support/Spotify"
         - "{{ homedir }}/Library/Application Support/Stats"
         - "{{ homedir }}/Library/Application Support/zoom.us"
-        - "{{ homedir }}/Library/Containers/com.apple.mediaanalysisd"
         - "{{ homedir }}/Library/Containers/com.apple.Safari"
+        - "{{ homedir }}/Library/Containers/com.apple.mediaanalysisd"
         - "{{ homedir }}/Library/IdentityServices"    # frequently changing
         - "{{ homedir }}/Movies"
         - "{{ homedir }}/Music"
+        - "{{ homedir }}/go"
