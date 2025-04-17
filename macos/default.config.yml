@@ -90,7 +90,4 @@ homebrew_cask_installed_apps:
   - "visualvm"
   - "zoom"
 
-mh_hostname: "argon"
-mh_localhostname: "argon"
-mh_computername: "argon"
 mh_netbiosname: "argon"
