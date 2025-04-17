@@ -71,7 +71,7 @@ exclude_file() {
     local path
     while IFS= read -r -d '' path; do
         if tmutil isexcluded "${path}" | grep -Fq '[Excluded]'; then
-            echo "- ${path#"${SOURCE_CODE_ROOT}/"} is already excluded, skipping."
+            echo "- Already excluded, skipped: ${path#"${SOURCE_CODE_ROOT}/"}"
             continue
         fi
 
@@ -81,7 +81,7 @@ exclude_file() {
         sudo tmutil addexclusion -p "${path}"
 
         sizeondisk=$(du -hs "${path}" | cut -f1)
-        echo "- ${path#"${SOURCE_CODE_ROOT}/"} has been excluded from Time Machine backups (${sizeondisk})."
+        echo "- Added exclusion: ${path#"${SOURCE_CODE_ROOT}/"} (${sizeondisk})."
     done
 }
 
