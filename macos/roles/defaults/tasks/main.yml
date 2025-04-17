@@ -265,6 +265,7 @@
         - "{{ homedir }}/Library/Application Support/zoom.us"
         - "{{ homedir }}/Library/Containers/com.apple.Safari"
         - "{{ homedir }}/Library/Containers/com.apple.mediaanalysisd"
+        - "{{ homedir }}/Library/Containers/com.docker.docker/Data/vms"
         - "{{ homedir }}/Library/IdentityServices"    # frequently changing
         - "{{ homedir }}/Movies"
         - "{{ homedir }}/Music"
