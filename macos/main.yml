@@ -18,5 +18,7 @@
     #   tags: ["mas"]
     - role: "defaults"
       tags: ["defaults"]
+    - role: "time_machine"
+      tags: ["time_machine"]
     - role: "system"
       tags: ["system"]
