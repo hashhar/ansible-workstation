@@ -39,6 +39,7 @@
         - "{{ homedir }}/Downloads/LocalSend"
         - "{{ homedir }}/Downloads/VideoDownloadHelper"
         - "{{ homedir }}/Library/Application Support/Code"
+        - "{{ homedir }}/Library/Application Support/Firefox/Profiles/524oqqak.default-nightly/storage/default/https+++open.spotify.com^userContextId=1/cache" # very noisy, the path would need to be updated for different firefox profile ids
         - "{{ homedir }}/Library/Application Support/Google"
         - "{{ homedir }}/Library/Application Support/Slack"
         - "{{ homedir }}/Library/Application Support/Spotify"
