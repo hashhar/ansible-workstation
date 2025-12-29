@@ -10,25 +10,34 @@ homebrew_installed_packages:
   - "awscli"
   - "azure-cli"
   - "bash"
+  - "claude-code"
+  - "cockroachdb/tap/cockroach-sql" # stargate
+  - "cockroachdb/tap/cockroach" # stargate
+  - "conftest" # stargate
   - "coreutils"
   - "curl"
   - "findutils"
   - "fzf"
   - "gawk"
+  - "gettext" # envsubst,stargate
   - "gh"
-  - "git"
   - "git-absorb"
   - "git-extras"
+  - "git"
   - "gnu-sed"
   - "gnu-tar"
   - "gnupg"
   - "go"
   - "gron"
+  - "helm" # stargate
   - "imagemagick"
   - "jenv"
   - "jq"
+  - "kind" # stargate
+  - "kubeconform" # stargate
   - "massren"
   - "maven"
+  - "minikube" # stargate
   - "moreutils"
   - "mpv"
   - "mvndaemon/mvnd/mvnd@1"
@@ -52,16 +61,6 @@ homebrew_installed_packages:
   - "xmlstarlet"
   - "yq"
   - "zsh"
-  # Stargate
-  - "claude-code"
-  - "cockroachdb/tap/cockroach"
-  - "cockroachdb/tap/cockroach-sql"
-  - "minikube"
-  - "kind"
-  - "helm"
-  - "conftest"
-  - "kubeconform"
-  - "gettext"
 
 
 homebrew_cask_accept_external_apps: false
@@ -77,7 +76,7 @@ homebrew_cask_installed_apps:
   - "font-fira-mono"
   - "gimp"
   - "google-chrome"
-  - "gcloud-cli"
+  - "gcloud-cli" # stargate
   - "ghostty"
   - "iterm2"
   - "jdk-mission-control"
