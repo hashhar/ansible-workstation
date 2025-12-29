@@ -62,7 +62,6 @@ homebrew_installed_packages:
   - "yq"
   - "zsh"
 
-
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
   - "adobe-acrobat-reader"
@@ -101,5 +100,3 @@ homebrew_cask_installed_apps:
   - "visual-studio-code"
   - "visualvm"
   - "zoom"
-
-mh_netbiosname: "argon"

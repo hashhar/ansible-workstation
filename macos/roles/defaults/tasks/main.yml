@@ -21,21 +21,19 @@
     state: "present"
   loop:
     # Wi-Fi
-    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible WiFi", value: "true", type: "boolean" }
+    - { domain: "com.apple.controlcenter", key: "NSStatusItem VisibleCC WiFi", value: "true", type: "boolean" }
     # Bluetooth
-    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible Bluetooth", value: "true", type: "boolean" }
+    - { domain: "com.apple.controlcenter", key: "NSStatusItem VisibleCC Bluetooth", value: "true", type: "boolean" }
     # AirDrop
     - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible AirDrop", value: "false", type: "boolean" }
     # Sound
-    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible Sound", value: "true", type: "boolean" }
-    # Now Playing
-    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible NowPlaying", value: "true", type: "boolean" }
+    - { domain: "com.apple.controlcenter", key: "NSStatusItem VisibleCC Sound", value: "true", type: "boolean" }
     # Battery
-    - { domain: "com.apple.controlcenter", key: "NSStatusItem Visible Battery", value: "true", type: "boolean" }
+    - { domain: "com.apple.controlcenter", key: "NSStatusItem VisibleCC Battery", value: "true", type: "boolean" }
     # Menu Bar Only > Spotlight
     - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible Item-0", value: "false", type: "boolean" }
     # Menu Bar Only > TimeMachine
-    - { domain: "com.apple.systemuiserver", key: "NSStatusItem Visible com.apple.menuextra.TimeMachine", value: "true", type: "boolean" }
+    - { domain: "com.apple.systemuiserver", key: "NSStatusItem VisibleCC com.apple.menuextra.TimeMachine", value: "true", type: "boolean" }
     - domain: "com.apple.systemuiserver"
       key: "menuExtras"
       value:
