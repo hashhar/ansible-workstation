@@ -2,7 +2,9 @@
 homebrew_upgrade_all_packages: false
 
 homebrew_taps:
+  - "cockroachdb/tap"
   - "localsend/localsend"
+  - "mvndaemon/mvnd"
 
 homebrew_installed_packages:
   - "awscli"
@@ -14,7 +16,6 @@ homebrew_installed_packages:
   - "fzf"
   - "gawk"
   - "gh"
-  - "ghostscript"
   - "git"
   - "git-absorb"
   - "git-extras"
@@ -24,10 +25,8 @@ homebrew_installed_packages:
   - "go"
   - "gron"
   - "imagemagick"
-  - "img2pdf"
   - "jenv"
   - "jq"
-  - "mas"
   - "massren"
   - "maven"
   - "moreutils"
@@ -53,6 +52,17 @@ homebrew_installed_packages:
   - "xmlstarlet"
   - "yq"
   - "zsh"
+  # Stargate
+  - "claude-code"
+  - "cockroachdb/tap/cockroach"
+  - "cockroachdb/tap/cockroach-sql"
+  - "minikube"
+  - "kind"
+  - "helm"
+  - "conftest"
+  - "kubeconform"
+  - "gettext"
+
 
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
@@ -67,7 +77,8 @@ homebrew_cask_installed_apps:
   - "font-fira-mono"
   - "gimp"
   - "google-chrome"
-  - "google-cloud-sdk"
+  - "gcloud-cli"
+  - "ghostty"
   - "iterm2"
   - "jdk-mission-control"
   - "jetbrains-toolbox"
@@ -84,8 +95,8 @@ homebrew_cask_installed_apps:
   - "slack"
   - "spotify"
   - "stats"
-  - "syncthing"
-  - "tailscale"
+  - "syncthing-app"
+  - "tailscale-app"
   - "temurin"
   - "utm"
   - "visual-studio-code"
