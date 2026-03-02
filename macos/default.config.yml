@@ -10,13 +10,13 @@ homebrew_installed_packages:
   - "awscli"
   - "azure-cli"
   - "bash"
-  - "claude-code"
   - "cockroachdb/tap/cockroach-sql" # stargate
   - "cockroachdb/tap/cockroach" # stargate
   - "conftest" # stargate
   - "coreutils"
   - "curl"
   - "findutils"
+  - "eksctl"
   - "fzf"
   - "gawk"
   - "gettext" # envsubst,stargate
@@ -31,10 +31,13 @@ homebrew_installed_packages:
   - "gron"
   - "helm" # stargate
   - "imagemagick"
+  - "jdtls"
   - "jenv"
   - "jq"
+  - "k9s"
   - "kind" # stargate
   - "kubeconform" # stargate
+  - "kubernetes-cli" # stargate
   - "massren"
   - "maven"
   - "minikube" # stargate
@@ -44,8 +47,10 @@ homebrew_installed_packages:
   - "ncdu"
   - "neovim"
   - "node"
+  - "pandoc"
+  - "poppler"
   - "pyenv"
-  - "python"
+  - "python@3.12"
   - "ripgrep"
   - "rsync"
   - "shellcheck"
@@ -55,6 +60,7 @@ homebrew_installed_packages:
   - "stow"
   - "tmux"
   - "tree"
+  - "typescript-language-server"
   - "vim"
   - "watch"
   - "wget"
@@ -65,9 +71,13 @@ homebrew_installed_packages:
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
   - "adobe-acrobat-reader"
+  - "affinity"
   - "android-file-transfer"
   - "backuploupe"
   - "betterdisplay"
+  - "blackhole-16ch"
+  - "claude-code"
+  - "codex"
   - "dbeaver-community"
   - "firefox"
   - "firefox@nightly"
@@ -84,7 +94,7 @@ homebrew_cask_installed_apps:
   - "jordanbaird-ice"
   - "keeper-password-manager"
   - "localsend"
-  - "logi-options-plus"
+  - "logi-options+"
   - "meetingbar"
   - "obsidian"
   - "orbstack"
