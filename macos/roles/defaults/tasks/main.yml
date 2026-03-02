@@ -19,6 +19,7 @@
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
+  notify: "Restart SystemUIServer"
   loop:
     # Wi-Fi
     - { domain: "com.apple.controlcenter", key: "NSStatusItem VisibleCC WiFi", value: "true", type: "boolean" }
@@ -48,6 +49,7 @@
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
+  notify: "Restart Dock"
   loop:
     # Position on screen
     - { domain: "com.apple.dock", key: "orientation", value: "left", type: "string" }
@@ -70,6 +72,7 @@
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
+  notify: "Restart Dock"
   vars:
     # Modifier key magic values
     modifier_none: "0"
@@ -142,6 +145,7 @@
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
+  notify: "Restart Dock"
   loop:
     # Tracking speed
     - { domain: "NSGlobalDomain", key: "com.apple.mouse.scaling", value: "1.5", type: "float" }
@@ -174,6 +178,7 @@
     value: "{{ item.value }}"
     type: "{{ item.type }}"
     state: "present"
+  notify: "Restart Finder"
   vars:
     # Search scopes
     search_scope_this_mac: "SCev"
