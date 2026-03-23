@@ -21,12 +21,14 @@ IFS=', ' read -r -a DOMAINS <<< "$(defaults domains)"
 success=0
 failed=0
 for domain in "${DOMAINS[@]}"; do
+  # Skip domains that look like flags (e.g. --help returned by `defaults domains`)
+  [[ "$domain" == -* ]] && continue
   outfile="$SNAPSHOT_DIR/${domain}.json"
   if defaults export "$domain" - 2>/dev/null | plutil -convert json -r -o "$outfile" - 2>/dev/null; then
-    ((success++))
+    ((++success))
   else
     echo "WARN: could not export $domain"
-    ((failed++))
+    ((++failed))
   fi
 done
 
