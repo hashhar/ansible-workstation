@@ -31,7 +31,6 @@ homebrew_installed_packages:
   - "gron"
   - "helm" # stargate
   - "imagemagick"
-  - "jdtls"
   - "jenv"
   - "jq"
   - "k9s"
@@ -67,6 +66,9 @@ homebrew_installed_packages:
   - "xmlstarlet"
   - "yq"
   - "zsh"
+  - "fd"
+  - "duckdb"
+  - "watchexec"
 
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
