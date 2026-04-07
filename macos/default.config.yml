@@ -69,6 +69,8 @@ homebrew_installed_packages:
   - "fd"
   - "duckdb"
   - "watchexec"
+  - "chezmoi"
+  - "just"
 
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
@@ -78,6 +80,7 @@ homebrew_cask_installed_apps:
   - "backuploupe"
   - "betterdisplay"
   - "blackhole-16ch"
+  - "claude"
   - "claude-code"
   - "codex"
   - "dbeaver-community"
