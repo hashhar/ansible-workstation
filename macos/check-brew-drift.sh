@@ -19,10 +19,13 @@ extract_yaml_list() {
 }
 
 # Extract package names from a Brewfile dump, filtered by type prefix.
+# A Brewfile line holds the name in its first quoted field. Options such as
+# `, trusted: true` may follow the closing quote, so match the quotes instead
+# of the end of the line.
 extract_brewfile() {
     local prefix="$1"
     grep "^${prefix} " "$2" \
-        | sed "s/^${prefix} *//; s/^\"//; s/\"$//" \
+        | sed -E "s/^${prefix} +\"([^\"]+)\".*/\1/" \
         || true
 }
 
