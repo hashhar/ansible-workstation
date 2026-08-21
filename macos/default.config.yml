@@ -4,26 +4,33 @@ homebrew_upgrade_all_packages: false
 homebrew_taps:
   - "cockroachdb/tap"
   - "localsend/localsend"
+  - "morantron/tmux-fingers"
   - "mvndaemon/mvnd"
 
 homebrew_installed_packages:
+  - "age"
   - "awscli"
   - "azure-cli"
   - "bash"
-  - "cockroachdb/tap/cockroach-sql" # stargate
+  - "chezmoi"
   - "cockroachdb/tap/cockroach" # stargate
+  - "cockroachdb/tap/cockroach-sql" # stargate
   - "conftest" # stargate
   - "coreutils"
   - "curl"
-  - "findutils"
+  - "difftastic" # structural diff, opt-in via `git difftool -t difftastic`
+  - "duckdb"
   - "eksctl"
+  - "findutils"
   - "fzf"
   - "gawk"
   - "gettext" # envsubst,stargate
   - "gh"
-  - "git-absorb"
-  - "git-extras"
   - "git"
+  - "git-absorb"
+  - "git-delta" # `delta`, the git pager
+  - "git-extras"
+  - "git-filter-repo"
   - "gnu-sed"
   - "gnu-tar"
   - "gnupg"
@@ -33,6 +40,7 @@ homebrew_installed_packages:
   - "imagemagick"
   - "jenv"
   - "jq"
+  - "just"
   - "k9s"
   - "kind" # stargate
   - "kubeconform" # stargate
@@ -40,6 +48,7 @@ homebrew_installed_packages:
   - "massren"
   - "maven"
   - "minikube" # stargate
+  - "morantron/tmux-fingers/tmux-fingers"
   - "moreutils"
   - "mpv"
   - "mvndaemon/mvnd/mvnd@1"
@@ -62,20 +71,18 @@ homebrew_installed_packages:
   - "typescript-language-server"
   - "vim"
   - "watch"
+  - "watchexec"
   - "wget"
   - "xmlstarlet"
   - "yq"
+  - "zoxide"
   - "zsh"
-  - "fd"
-  - "duckdb"
-  - "watchexec"
-  - "chezmoi"
-  - "just"
 
 homebrew_cask_accept_external_apps: false
 homebrew_cask_installed_apps:
   - "adobe-acrobat-reader"
   - "affinity"
+  - "alt-tab"
   - "android-file-transfer"
   - "backuploupe"
   - "betterdisplay"
@@ -84,6 +91,7 @@ homebrew_cask_installed_apps:
   - "claude-code"
   - "codex"
   - "dbeaver-community"
+  - "disk-inventory-x"
   - "firefox"
   - "firefox@nightly"
   - "font-fira-code"
@@ -92,6 +100,7 @@ homebrew_cask_installed_apps:
   - "google-chrome"
   - "gcloud-cli" # stargate
   - "ghostty"
+  - "handy"
   - "iterm2"
   - "jdk-mission-control"
   - "jetbrains-toolbox"
@@ -100,11 +109,13 @@ homebrew_cask_installed_apps:
   - "keeper-password-manager"
   - "localsend"
   - "logi-options+"
+  - "maccy"
   - "meetingbar"
   - "obsidian"
   - "orbstack"
   - "protonvpn"
   - "rectangle"
+  - "shottr"
   - "slack"
   - "spotify"
   - "stats"
